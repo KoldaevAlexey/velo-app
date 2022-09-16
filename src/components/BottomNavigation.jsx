@@ -1,10 +1,8 @@
 import * as React from "react";
 import { BottomNavigation, Text } from "react-native-paper";
-import Blog from "./Blog";
-
-const AlbumsRoute = () => <Text>Albums</Text>;
-
-const RecentsRoute = () => <Text>Recents</Text>;
+import Blog from "../screens/Blog";
+import About from "../screens/About";
+import Catalog from "../screens/Catalog";
 
 const BotNavigation = () => {
     const [index, setIndex] = React.useState(0);
@@ -12,16 +10,16 @@ const BotNavigation = () => {
         {
             key: "blog",
             title: "Блог",
-            focusedIcon: "heart",
+            focusedIcon: "note-text-outline",
         },
-        { key: "albums", title: "Albums", focusedIcon: "album" },
-        { key: "recents", title: "Recents", focusedIcon: "history" },
+        { key: "about", title: "О компании", focusedIcon: "emoticon-devil" },
+        { key: "catalog", title: "Каталог", focusedIcon: "bike-fast" },
     ]);
 
     const renderScene = BottomNavigation.SceneMap({
         blog: Blog,
-        albums: AlbumsRoute,
-        recents: RecentsRoute,
+        about: About,
+        catalog: Catalog,
     });
 
     return (
@@ -29,6 +27,10 @@ const BotNavigation = () => {
             navigationState={{ index, routes }}
             onIndexChange={setIndex}
             renderScene={renderScene}
+            inactiveColor={"grey"}
+            sceneAnimationEnabled={true}
+            sceneAnimationType={"shifting"}
+            style={{ marginTop: 50 }}
         />
     );
 };
