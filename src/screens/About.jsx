@@ -1,9 +1,9 @@
-import { ScrollView } from "react-native";
+import * as React from "react";
+import { ScrollView, Button } from "react-native";
 import { Text } from "react-native-paper";
-import React from "react";
 import StoreInfo from "../components/StoreInfo";
 
-export default function About() {
+export default function About({ navigation }) {
     return (
         <ScrollView>
             <Text variant="headlineMedium">Наши магазины</Text>
@@ -22,6 +22,10 @@ export default function About() {
                 adress={"г. Москва Янгеля, ул.Кировоградская, д.23а"}
                 phoneNumber={"+7(495) 021-67-94"}
                 workTime={"ПН-ВС с 10:00 до 22:00"}
+            />
+            <Button
+                onPress={() => navigation.navigate("Blog")}
+                title="Go в блог"
             />
         </ScrollView>
     );

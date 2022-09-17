@@ -1,5 +1,5 @@
+import * as React from "react";
 import { View, Text, Image } from "react-native";
-import React from "react";
 import { Divider } from "react-native-paper";
 
 export default function StoreInfo({ img, adress, phoneNumber, workTime }) {

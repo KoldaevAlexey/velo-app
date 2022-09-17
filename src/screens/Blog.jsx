@@ -1,8 +1,8 @@
-import { View, ScrollView } from "react-native";
-import React from "react";
+import * as React from "react";
+import { View, ScrollView, Button } from "react-native";
 import Post from "../components/Post";
 
-export default function Blog() {
+export default function Blog({ navigation }) {
     return (
         <ScrollView>
             <View>
@@ -42,6 +42,10 @@ export default function Blog() {
                     date={"8 июля 2022"}
                 />
             </View>
+            <Button
+                onPress={() => navigation.navigate("Catalog")}
+                title="Go to каталог бро"
+            />
         </ScrollView>
     );
 }
