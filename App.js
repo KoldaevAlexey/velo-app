@@ -1,21 +1,68 @@
 import * as React from "react";
-import { Button, View } from "react-native";
+import { Button, View, BlurView, Image, StatusBar } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
+import Head from "./src/components/Header";
 import About from "./src/screens/About";
 import Blog from "./src/screens/Blog";
 import Catalog from "./src/screens/Catalog";
+import Footer from "./src/components/Footer";
+import Home from "./src/screens/Home";
 
 import { createStackNavigator } from "@react-navigation/stack";
+
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
+const Tab = createBottomTabNavigator();
+
+function MyTabs() {
+    return (
+        <Tab.Navigator
+            screenOptions={{
+                tabBarActiveBackgroundColor: "red",
+            }}
+        >
+            <Tab.Screen
+                name="Home"
+                component={Home}
+                options={{
+                    tabBarIcon: ({ color, size }) => (
+                        <Image
+                            source={{
+                                uri: "https://cdn-icons-png.flaticon.com/512/92/92602.png",
+                            }}
+                            style={{ width: size, height: size }}
+                        />
+                    ),
+                }}
+            />
+            <Tab.Screen
+                name="Catalog"
+                component={Catalog}
+                options={{ headerShown: false }}
+            />
+
+            <Tab.Screen
+                name="About"
+                component={About}
+                options={{ headerShown: false }}
+            />
+        </Tab.Navigator>
+    );
+}
 
 const Stack = createStackNavigator();
 
 export default function App() {
     return (
         <NavigationContainer>
-            <Stack.Navigator>
-                <Stack.Screen name="About" component={About} />
+            <Stack.Navigator
+                initialRouteName="Home"
+                screenOptions={{
+                    header: Head,
+                }}
+            >
+                <Stack.Screen name="MyTabs" component={MyTabs} />
                 <Stack.Screen name="Blog" component={Blog} />
-                <Stack.Screen name="Catalog" component={Catalog} />
             </Stack.Navigator>
         </NavigationContainer>
     );
