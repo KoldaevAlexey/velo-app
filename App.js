@@ -25,6 +25,7 @@ function MyTabs() {
                 name="Home"
                 component={Home}
                 options={{
+                    title: "Главная",
                     tabBarIcon: ({ color, size }) => (
                         <Image
                             source={{

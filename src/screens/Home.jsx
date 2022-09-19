@@ -8,7 +8,6 @@ export default function Home() {
 
     return (
         <View>
-            <Text>Домашняя страница</Text>
             <Button title="123" onPress={() => navigation.navigate("Blog")} />
             <Index />
         </View>

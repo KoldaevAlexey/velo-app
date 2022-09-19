@@ -1,12 +1,33 @@
 import * as React from "react";
-import { ScrollView, Button } from "react-native";
-import { Text } from "react-native-paper";
+import { ScrollView, Button, View, TouchableOpacity } from "react-native";
+import { Text, Divider } from "react-native-paper";
 import StoreInfo from "../components/StoreInfo";
+
+const aboutMagazine = () => {};
 
 export default function About({ navigation }) {
     return (
         <ScrollView>
             <Text variant="headlineMedium">Наши магазины</Text>
+            <View>
+                <TouchableOpacity
+                    onPress={() => {
+                        AboutMagazine;
+                    }}
+                    style={{ marginTop: 20 }}
+                >
+                    <Text variant="headlineSmall">г. Москва >> </Text>
+                </TouchableOpacity>
+                <Divider />
+                <TouchableOpacity style={{ marginTop: 20 }}>
+                    <Text variant="headlineSmall"> г. Челябинск >> </Text>
+                </TouchableOpacity>
+                <Divider />
+                <TouchableOpacity style={{ marginTop: 20 }}>
+                    <Text variant="headlineSmall">г. Новосибирск >> </Text>
+                </TouchableOpacity>
+                <Divider />
+            </View>
             <StoreInfo
                 img={
                     "https://www.velograd.ru/upload/iblock/69c/q2ys9elnzf2i9ioc0kpiphuuzcdrs20o/30258560053436464_c4de.jpg"
