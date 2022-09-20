@@ -44,7 +44,7 @@ export default function Blog({ navigation }) {
             </View>
             <Button
                 onPress={() => navigation.navigate("Catalog")}
-                title="Go to каталог бро"
+                title={`перейти в каталог`}
             />
         </ScrollView>
     );

@@ -8,11 +8,19 @@ import Catalog from "./src/screens/Catalog";
 import Footer from "./src/components/Footer";
 import Home from "./src/screens/Home";
 
+import { shopesData } from "./shopesData";
+
 import { createStackNavigator } from "@react-navigation/stack";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
+import ShopeInfo from "./src/components/ShopeInfo";
+
 const Tab = createBottomTabNavigator();
+
+const info = shopesData;
+
+export const infoContext = React.createContext(info);
 
 function MyTabs() {
     return (
@@ -55,16 +63,20 @@ const Stack = createStackNavigator();
 
 export default function App() {
     return (
-        <NavigationContainer>
-            <Stack.Navigator
-                initialRouteName="Home"
-                screenOptions={{
-                    header: Head,
-                }}
-            >
-                <Stack.Screen name="MyTabs" component={MyTabs} />
-                <Stack.Screen name="Blog" component={Blog} />
-            </Stack.Navigator>
-        </NavigationContainer>
+        <infoContext.Provider value={info}>
+            <NavigationContainer>
+                <Stack.Navigator
+                    initialRouteName="Home"
+                    screenOptions={{
+                        header: Head,
+                    }}
+                >
+                    <Stack.Screen name="MyTabs" component={MyTabs} />
+
+                    <Stack.Screen name="Blog" component={Blog} />
+                    <Stack.Screen name="ShopeInfo" component={ShopeInfo} />
+                </Stack.Navigator>
+            </NavigationContainer>
+        </infoContext.Provider>
     );
 }
